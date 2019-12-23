@@ -11,5 +11,6 @@ typedef unsigned int          U32;
 typedef long long             S64;
 typedef unsigned long long    U64;
 typedef unsigned short uint16_t;
-
+typedef unsigned char uint8_t;
+typedef unsigned long uint32_t;
 #define NULL 0x0

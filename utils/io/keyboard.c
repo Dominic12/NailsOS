@@ -4,7 +4,7 @@
 #include "../string.c"
 #include "../../types.h"
 #include "port.c"
-void wait_for_io(uint32 timer_count)
+static void wait_for_io(uint32 timer_count)
 {
   while(1){
     asm volatile("nop");

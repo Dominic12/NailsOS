@@ -8,7 +8,7 @@ void* lower_mem;
 void* upper_mem;
 Page* top_page; // Keep track of the Top page, (Performance)
 int freeMemory = 0;
-Page* create_page(void* addr, size_t size);
+static Page* create_page(void* addr, size_t size);
 void *memset(void *s, int c, size_t n);
 
 Page* mem_init(void* lower, void* upper){
@@ -18,7 +18,7 @@ Page* mem_init(void* lower, void* upper){
 }
 
 
-Page* create_page(void* addr, size_t size){
+static Page* create_page(void* addr, size_t size){
     printf("Creating page at: 0x%p\n", addr);
     Page *page = (Page*)addr;
     page->size = size;
