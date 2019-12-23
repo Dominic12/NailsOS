@@ -4,7 +4,6 @@
 #include "../string.c"
 #include "../../types.h"
 
-
 void wait_for_io(uint32 timer_count)
 {
   while(1){
@@ -42,20 +41,17 @@ char get_input_keycode()
   return ch;
 }
 
-char* read_line(){
-    int last = 0;
+char* read_line(char* buf){
     char c = 0;
-    int enterIdx = 0;
-    char* buf;
     while(c = get_input_keycode(), c != KEY_ENTER){
         char a_char = get_ascii_char(c);
-        buf[last] = a_char;
-        ++last;
-        enterIdx = last + 1;
+        char currChar[2];
+        currChar[1] = '\0';
+        currChar[0] = a_char;
+        buf = strncat(buf, currChar, (sizeof(buf) / sizeof(char*)) + 2);
         print_char(a_char);
         sleep(0x04FFFFFF);
     }
-    buf[enterIdx] = '\0';
     print_new_line();
         sleep(0x02FFFFFF);
 

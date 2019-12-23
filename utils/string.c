@@ -1,4 +1,14 @@
 
+
+int strnlen(const char *str, size_t maxlen)
+{
+	const char *p = str;
+
+	while (maxlen-- > 0 && *p)
+		p++;
+	return p - str;
+}
+
 int size(char *ptr)
 {
     //variable used to access the subsequent array elements.
@@ -25,24 +35,35 @@ char *_strcpy(char *d, char *s){
    return saved;
 }
 
-char* _strcat(char* destination, const char* source, int num)
+char *strncat(char *dest, const char *src, size_t count)
 {
-	int i, j;
-	for (i = 0; destination[i] != '\0'; i++);
-	for (j = 0; source[j] != '\0' && j < num; j++)
-		destination[i + j] = source[j];
-	destination[i + j] = '\0';
-	return destination;
+	char *tmp = dest;
+
+	if (count) {
+		while (*dest)
+			dest++;
+		while ((*dest++ = *src++) != 0) {
+			if (--count == 0) {
+				*dest = '\0';
+				break;
+			}
+		}
+	}
+	return tmp;
 }
-
-int _strcmp(const char* s1, const char* s2)
+int strcmp(const char *cs, const char *ct)
 {
-    const unsigned char *p1 = ( const unsigned char * )s1;
-    const unsigned char *p2 = ( const unsigned char * )s2;
+	unsigned char c1, c2;
 
-    while ( *p1 && *p1 == *p2 ) ++p1, ++p2;
-
-    return ( *p1 > *p2 ) - ( *p2  > *p1 );
+	while (1) {
+		c1 = *cs++;
+		c2 = *ct++;
+		if (c1 != c2)
+			return c1 < c2 ? -1 : 1;
+		if (!c1)
+			break;
+	}
+	return 0;
 }
 char* append(char*s, char c) {
     char new[size(s)+2];

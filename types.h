@@ -10,3 +10,5 @@ typedef int                   S32;
 typedef unsigned int          U32;
 typedef long long             S64;
 typedef unsigned long long    U64;
+
+#define NULL 0x0

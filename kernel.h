@@ -12,8 +12,6 @@
 
 uint16* vga_buffer;
 
-#define NULL 0
-
 enum vga_color {
     BLACK,
     BLUE,

@@ -1,6 +1,7 @@
 {
     "files.associations": {
         "kernel.h": "c",
-        "type_traits": "c"
+        "type_traits": "c",
+        "stdarg.h": "c"
     }
 }
