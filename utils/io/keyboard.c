@@ -34,12 +34,20 @@ char get_input_keycode()
 char* read_line(char* buf){
     char c = 0;
     while(c = get_input_keycode(), c != KEY_ENTER){
-        char a_char = get_ascii_char(c);
-        char currChar[2];
-        currChar[1] = '\0';
-        currChar[0] = a_char;
-        buf = strncat(buf, currChar, (sizeof(buf) / sizeof(char*)) + 2);
-        print_char(a_char);
+        if(c == KEY_BACKSPACE){
+          if(strlen(buf) > 0){
+            buf[strlen(buf)-1] = 0;
+            remove_last();
+          }
+        }else{
+          char a_char = get_ascii_char(c);
+          char currChar[2];
+          currChar[1] = '\0';
+          currChar[0] = a_char;
+          buf = strncat(buf, currChar, (sizeof(buf) / sizeof(char*)) + 2);
+          print_char(a_char);
+        }
+        
         sleep(0x04FFFFFF);
     }
     print_new_line();

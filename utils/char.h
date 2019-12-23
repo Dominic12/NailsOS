@@ -28,8 +28,8 @@
 #define KEY_V 0x2F
 #define KEY_W 0x11
 #define KEY_X 0x2D
-#define KEY_Y 0x15
-#define KEY_Z 0x2C
+#define KEY_Y 0x2C
+#define KEY_Z 0x15
 #define KEY_1 0x02
 #define KEY_2 0x03
 #define KEY_3 0x04

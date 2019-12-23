@@ -41,6 +41,8 @@ _start:
 
   # assign current stack pointer location to stackTop
 	mov $stackTop, %esp
+	push %eax
+    push %ebx  
 
   # call the kernel main source
 	call kernel_entry

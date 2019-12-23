@@ -97,6 +97,11 @@ static char *number(char *str, long num, int base, int size, int precision,
 	return str;
 }
 
+
+int puts(char* str){
+	print_string(str);
+}
+
 int vsprintf(char *buf, const char *fmt, va_list args)
 {
 	int len;

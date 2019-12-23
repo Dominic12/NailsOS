@@ -17,4 +17,13 @@ cp grub.cfg isodir/boot/grub/grub.cfg
 grub-mkrescue -o nailsOS.iso isodir
 
 #run it in qemu
-qemu-system-x86_64 -cdrom nailsOS.iso
+qemu-system-x86_64                                 \
+  -accel tcg,thread=single                       \
+  -cpu core2duo                                  \
+  -m 128                                         \
+  -no-reboot                                     \
+  -drive format=raw,media=cdrom,file=nailsOS.iso    \
+  -serial stdio                                  \
+  -smp 1                                         \
+  -usb                                           \
+  -vga std                                      
