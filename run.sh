@@ -7,7 +7,7 @@ gcc -m32 -c kernel.c -o kernel.o -std=gnu99 -ffreestanding -O2 -Wall -Wextra
 #linking the kernel with kernel.o and boot.o files
 ld -m elf_i386 -T linker.ld kernel.o boot.o -o nailsOS.bin -nostdlib
 
-#check MyOS.bin file is x86 multiboot file or not
+#check NailsOS.bin file is x86 multiboot file or not
 grub-file --is-x86-multiboot nailsOS.bin
 
 #building the iso file
