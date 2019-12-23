@@ -1,5 +1,5 @@
 #include "char.h"
-#include "../kernel.h"
+#include "../types.h"
 
 char get_ascii_char(uint8 key_code)
 {

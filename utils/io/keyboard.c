@@ -2,6 +2,7 @@
 #include "../../kernel.h"
 #include "../char.c"
 #include "../string.c"
+#include "../../types.h"
 
 
 void wait_for_io(uint32 timer_count)

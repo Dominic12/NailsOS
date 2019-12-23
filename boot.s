@@ -15,7 +15,13 @@
 .long FLAGS
 .long CHECKSUM
 
+# set the heap start
 
+heapStart:
+
+.skip 1024
+
+heapBottom:
 # set the stack bottom 
 stackBottom:
 

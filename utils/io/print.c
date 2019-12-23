@@ -1,4 +1,5 @@
 #include "../../kernel.h"
+#include "../../types.h"
 
 //index for video buffer array
 
@@ -47,18 +48,6 @@ void clear_vga_buffer(uint16 **buffer, uint8 fore_color, uint8 back_color)
   vga_index = 0;
 }
 
-//initialize vga buffer
-void init_vga(uint8 fore_color, uint8 back_color)
-{
-  vga_buffer = (uint16*)VGA_ADDRESS;
-  clear_vga_buffer(&vga_buffer, fore_color, back_color);
-  g_fore_color = fore_color;
-  g_back_color = back_color;
-}
-
-/*
-increase vga_index by width of row(80)
-*/
 void print_new_line()
 {
   if(next_line_index >= 55){
@@ -68,7 +57,6 @@ void print_new_line()
   vga_index = 80*next_line_index;
   next_line_index++;
 }
-
 //assign ascii character to video buffer
 void print_char(char ch)
 {
@@ -79,6 +67,33 @@ if(ch == '\n'){
   vga_buffer[vga_index] = vga_entry(ch, g_fore_color, g_back_color);
   vga_index++;
 }
+
+
+void print_string(char *str)
+{
+  uint32 index = 0;
+  while(str[index]){
+    print_char(str[index]);
+    index++;
+  }
+}
+
+//initialize vga buffer
+void init_vga(uint8 fore_color, uint8 back_color)
+{
+  vga_buffer = (uint16*)VGA_ADDRESS;
+  clear_vga_buffer(&vga_buffer, fore_color, back_color);
+  g_fore_color = fore_color;
+  g_back_color = back_color;
+  print_string("VGA alive!\n");
+}
+
+/*
+increase vga_index by width of row(80)
+*/
+
+
+
 
 
 uint32 strlen(const char* str)
@@ -121,14 +136,7 @@ void itoa(int num, char *number)
 }
 
 //print string by calling print_char
-void print_string(char *str)
-{
-  uint32 index = 0;
-  while(str[index]){
-    print_char(str[index]);
-    index++;
-  }
-}
+
 
 //print int by converting it into string
 //& then printing string

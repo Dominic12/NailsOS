@@ -1,9 +1,10 @@
+
+#include "types.h"
+
 #ifndef KERNEL_H
 #define KERNEL_H
 
-typedef unsigned char uint8;
-typedef unsigned short uint16;
-typedef unsigned int uint32;
+
 
 
 #define VGA_ADDRESS 0xB8000
